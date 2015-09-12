@@ -31,6 +31,9 @@ client = CloudCheckr::API::Client.new
 # Alternatively, keep the API key in an environment variable
 ENV['CLOUDCHECKR_ACCESS_KEY'] = "146D0Y8R...W6U0463K"
 client = CloudCheckr::API::Client.new
+
+# Use XML instead (not fully implemented)
+client = CloudCheckr::API::Client.new(format: :xml)
 ```
 
 Each endpoint (or "API call") is grouped into a "controller". The API client has a method representing each controller, and each controller has a method for each API call.
