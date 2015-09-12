@@ -1,0 +1,628 @@
+---
+- controller_name: account
+  api_calls:
+  - method_name: get_users
+    param_names:
+    - "(required)(admin level)access_key"
+    - use_account
+  - method_name: remove_user
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)email"
+    - use_account
+  - method_name: get_accounts
+    param_names:
+    - "(required)(admin level)access_key"
+    - use_account
+  - method_name: revoke_account
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)email"
+    - "(required)accounts"
+    - use_account
+  - method_name: grant_account
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)email"
+    - "(required)accounts"
+    - cost_report
+    - blended_cost
+    - unblended_cost
+    - list_cost
+    - resource_utilization_reports
+    - trending_reports
+    - change_monitoring
+    - best_practices
+    - all_access
+    - use_account
+  - method_name: add_account
+    param_names:
+    - "(required)access_key"
+    - "(required)account_name"
+    - user_name
+    - aws_access_key
+    - aws_secret_key
+    - account_tag
+    - emails
+  - method_name: delete_account
+    param_names:
+    - "(required)access_key"
+    - "(required)account_name"
+  - method_name: tag_account
+    param_names:
+    - "(required)access_key"
+    - "(required)account_name"
+    - "(required)account_tag"
+  - method_name: untag_account
+    param_names:
+    - "(required)access_key"
+    - "(required)account_name"
+    - "(required)account_tag"
+  - method_name: edit_credential
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)aws_access_key"
+    - "(required)aws_secret_key"
+    - "(required)use_account"
+  - method_name: edit_account
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)emails"
+    - "(required)use_account"
+    - alert_daily_billing
+    - alert_health_affected
+    - alert_health_all
+    - change_monitoring
+    - best_practices
+    - daily_bill_summary
+    - monthly_bill_summary
+    - daily_consolidated_bill_summary
+    - monthly_consolidated_bill_summary
+    - inventory_summary_report
+    - ec2_trending_report
+    - s3_summary_report
+    - ec2_resource_utilization_report
+  - method_name: add_user
+    param_names:
+    - "(required)access_key"
+    - "(required)email"
+    - "(required)account_access"
+    - "(required)user_role"
+    - cost_report
+    - blended_cost
+    - unblended_cost
+    - list_cost
+    - resource_utilization_reports
+    - trending_reports
+    - change_monitoring
+    - best_practices
+    - all_access
+    - auth_types
+  - method_name: add_users
+    param_names:
+    - "(required)access_key"
+    - "(required)emails"
+    - "(required)account_access"
+    - "(required)user_role"
+    - cost_report
+    - blended_cost
+    - unblended_cost
+    - list_cost
+    - resource_utilization_reports
+    - trending_reports
+    - change_monitoring
+    - best_practices
+    - all_access
+  - method_name: copy_user
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)email_to_copy"
+    - "(required)emails"
+    - use_account
+  - method_name: get_account_level_tags
+    param_names:
+    - "(required)(admin level)access_key"
+    - account
+    - use_account
+  - method_name: test_key
+    param_names:
+    - "(required)access_key"
+  - method_name: get_improperly_tagged_resources
+    param_names:
+    - "(required)access_key"
+    - date_from
+    - date_to
+    - aws_account_id
+    - rule_name
+    - resource_type
+    - resource_state
+- controller_name: alert
+  api_calls:
+  - method_name: add_cost_alert
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)alert_name"
+    - emails
+    - sns_topics
+    - pagerduty_service_key
+    - budget
+    - percent_of_budget
+    - send_every_days
+    - only_send_once
+    - budget_period
+    - budget_custom_start_date
+    - budget_custom_end_date
+    - saved_filter
+    - account_to_filter
+    - use_account
+  - method_name: delete_cost_alert
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)alert_name"
+    - use_account
+  - method_name: add_cost_alert_threshold
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)alert_name"
+    - emails
+    - sns_topics
+    - pagerduty_service_key
+    - budget
+    - percent_of_budget
+    - send_every_days
+    - only_send_once
+    - budget_period
+    - budget_custom_start_date
+    - budget_custom_end_date
+    - saved_filter
+    - account_to_filter
+    - use_account
+- controller_name: best_practice
+  api_calls:
+  - method_name: get_best_practices
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - all_result
+    - importance
+    - category
+    - use_account
+- controller_name: billing
+  api_calls:
+  - method_name: get_invoice
+    param_names:
+    - "(required)access_key"
+    - "(required)customer_names"
+    - "(required)start_date"
+    - "(required)end_date"
+    - "(required)format"
+    - "(required)cost_type"
+    - regions
+    - currency_denomination
+    - currency_conversion
+    - show_credits
+    - tag_key
+    - tag_value
+    - product_names
+    - use_account
+  - method_name: get_invoice_customers
+    param_names:
+    - "(required)access_key"
+    - use_account
+  - method_name: create_customer
+    param_names:
+    - "(required)access_key"
+    - "(required)name"
+    - "(required)email"
+    - "(required)address"
+    - "(required)aws_accounts"
+  - method_name: get_detailed_billing_analysis
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)saved_filter_name"
+    - start
+    - end
+    - use_account
+  - method_name: get_detailed_billing_with_grouping
+    param_names:
+    - "(required)(admin level)access_key"
+    - "(required)saved_filter_name"
+    - start
+    - end
+    - use_account
+  - method_name: get_ri_upfront_cost_amortization
+    param_names:
+    - "(required)access_key"
+    - "(required)start"
+    - "(required)end"
+    - "(required)service"
+  - method_name: get_detailed_billing_file
+    param_names:
+    - "(required)access_key"
+    - "(required)start"
+    - "(required)end"
+    - "(required)cost_type"
+- controller_name: change_monitoring
+  api_calls:
+  - method_name: get_changes
+    param_names:
+    - "(required)(admin level)access_key"
+    - start
+    - end
+    - resource_id
+    - use_account
+- controller_name: cloudwatch
+  api_calls:
+  - method_name: get_history
+    param_names:
+    - "(required)(admin level)access_key"
+    - start
+    - end
+    - service
+    - use_account
+- controller_name: cloudwatchevent
+  api_calls:
+  - method_name: get_detail
+    param_names:
+    - "(required)access_key"
+    - start
+    - end
+    - max_results
+    - use_account
+- controller_name: help
+  api_calls:
+  - method_name: get_all_api_endpoints
+    param_names:
+    - "(required)access_key"
+- controller_name: inventory
+  api_calls:
+  - method_name: get_resources_rds_snapshot_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_cloudformation_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_cloudsearch_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_dynamodb_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_elasticache_clusters_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_elasticache_nodes_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_elasticbeanstalk_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_elasticmapreduce_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_glacier_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_swf_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_vpc_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_iam_users
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_iam_groups
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_iam_roles
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_iam_Policies
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_workspaces_directories
+    param_names:
+    - "(required)access_key"
+    - custom_security_group
+    - directory_id
+    - directory_name
+    - iam_role_id
+    - region
+    - registration_code
+    - state
+    - type
+    - internet_access_enabled
+    - workdocs_enabled
+    - workspace_id
+    - user_name
+    - bundle_id
+    - error_code
+    - ip_address
+    - security_group_id
+    - subnet_id
+    - vpc_id
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_workspaces_details
+    param_names:
+    - "(required)access_key"
+    - custom_security_group
+    - directory_id
+    - directory_name
+    - iam_role_id
+    - region
+    - registration_code
+    - state
+    - type
+    - internet_access_enabled
+    - workdocs_enabled
+    - workspace_id
+    - user_name
+    - bundle_id
+    - error_code
+    - ip_address
+    - security_group_id
+    - subnet_id
+    - vpc_id
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_tagged_resources
+    param_names:
+    - "(required)(admin level)access_key"
+    - date
+    - tag_key
+    - resource_type
+    - use_account
+  - method_name: get_resources
+    param_names:
+    - "(required)(admin level)access_key"
+    - date
+    - use_account
+  - method_name: get_resources_ec2_address_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_ec2_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_ebs_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_ami_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_ec2_security_group_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_ec2_load_balancer_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_s3_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_rds_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_rds_backup_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_rds_security_group_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_rds_parameter_group_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_rds_snapshot_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_cloudformation_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_cloudsearch_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_dynamodb_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_elasticache_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_elasticbeanstalk_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_elasticmapreduce_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_glacier_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_swf_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_vpc_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_workspaces_summary
+    param_names:
+    - "(required)access_key"
+    - date
+  - method_name: get_resources_ec2_details
+    param_names:
+    - "(required)access_key"
+    - instance_ids
+    - resource_tags
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_ec2_address_details
+    param_names:
+    - "(required)access_key"
+    - instance_ids
+    - resource_tags
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_ebs_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_ebs_snapshots
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_ami_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_ec2_security_group_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_ec2_load_balancer_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_s3_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_rds_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_rds_backup_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_rds_security_group_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+  - method_name: get_resources_rds_parameter_group_details
+    param_names:
+    - "(required)access_key"
+    - date
+    - aws_account_ids
+    - max_results
+    - use_account
+- controller_name: security
+  api_calls:
+  - method_name: get_publicly_accessible_resources
+    param_names:
+    - "(required)access_key"
+    - date
