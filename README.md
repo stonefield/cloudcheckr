@@ -22,14 +22,14 @@ The API client uses JSON by default. Here's how to instantiate an API client.
 
 ```ruby
 # The only thing you need is an API key
-client = CloudCheckr::API::Client.new(access_key: "146DTUS4L21S13LEMN90QOB0Y8R91MANC5463KTARE96J4ORSS5UCD2KO3Z7W6U0")
+client = CloudCheckr::API::Client.new(access_key: "146D0Y8R...W6U0463K")
 
 # Another option is to set the API key globally
-CloudCheckr::API.access_key("146DTUS4L21S13LEMN90QOB0Y8R91MANC5463KTARE96J4ORSS5UCD2KO3Z7W6U0")
+CloudCheckr::API.access_key("146D0Y8R...W6U0463K")
 client = CloudCheckr::API::Client.new
 
 # Alternatively, keep the API key in an environment variable
-ENV['CLOUDCHECKR_ACCESS_KEY'] = "146DTUS4L21S13LEMN90QOB0Y8R91MANC5463KTARE96J4ORSS5UCD2KO3Z7W6U0"
+ENV['CLOUDCHECKR_ACCESS_KEY'] = "146D0Y8R...W6U0463K"
 client = CloudCheckr::API::Client.new
 ```
 
@@ -76,7 +76,7 @@ Here's more information about the [API Reference](http://support.cloudcheckr.com
 Some endpoints are admin-level and require an account name.
 
 ```ruby
-access_key = "146DTUS4L21S13LEMN90QOB0Y8R91MANC5463KTARE96J4ORSS5UCD2KO3Z7W6U0"
+access_key = "146D0Y8R...W6U0463K"
 account    = "Account Name"
 
 # Create an API client for with a default account specified
