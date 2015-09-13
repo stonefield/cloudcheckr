@@ -74,7 +74,11 @@ module CloudCheckr
         hash_class = hash.class
 
         if hash.is_a?(Hash)
-          hash_class[hash.map{|k, v| [k.gsub(/(.)([A-Z])/,'\1_\2').downcase, convert_keys_to_snake_case(v)]}]
+          hash_class.new.tap do |new_hash|
+            hash.map do |k, v|
+              new_hash[k.gsub(/(.)([A-Z])/,'\1_\2').downcase] = convert_keys_to_snake_case(v)
+            end
+          end
         elsif hash.is_a?(Array)
           hash.map{|item| convert_keys_to_snake_case(item)}
         else
