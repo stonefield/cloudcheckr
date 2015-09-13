@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["joel@joelvanhorn.com"]
   spec.summary       = %q{CloudCheckr API client}
   spec.description   = %q{Ruby client for CloudCheckr API.}
-  spec.homepage      = "https://github.com/betastream/cloudcheckr"
+  spec.homepage      = "https://github.com/joelvh/cloudcheckr"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
