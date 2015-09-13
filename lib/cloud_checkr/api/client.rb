@@ -63,8 +63,22 @@ module CloudCheckr
         if response.status != 200
           # TODO: Currently assumes JSON response
           raise ::CloudCheckr::API::ResponseError.new(data)
+        elsif @format == :json && ::CloudCheckr::API.snake_case_json_keys
+          convert_keys_to_snake_case(data)
         else
           data
+        end
+      end
+
+      def convert_keys_to_snake_case(hash)
+        hash_class = hash.class
+
+        if hash.is_a?(Hash)
+          hash_class[hash.map{|k, v| [k.gsub(/(.)([A-Z])/,'\1_\2').downcase, convert_keys_to_snake_case(v)]}]
+        elsif hash.is_a?(Array)
+          hash.map{|item| convert_keys_to_snake_case(item)}
+        else
+          hash
         end
       end
 

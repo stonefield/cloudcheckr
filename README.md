@@ -32,6 +32,10 @@ client = CloudCheckr::API::Client.new
 ENV['CLOUDCHECKR_ACCESS_KEY'] = "146D0Y8R...W6U0463K"
 client = CloudCheckr::API::Client.new
 
+# JSON responses automatically convert keys from camel case to snake case.
+# You can disable key conversion globally
+CloudCheckr::API.snake_case_json_keys(false)
+
 # Use XML instead (not fully implemented)
 client = CloudCheckr::API::Client.new(format: :xml)
 ```

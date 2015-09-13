@@ -7,24 +7,41 @@ module CloudCheckr
   module API
     CONTROLLERS = CloudCheckr::API::Controllers.build_controller_classes!
 
+    @@access_key           = ENV['CLOUDCHECKR_ACCESS_KEY']
+    @@use_account          = ENV['CLOUDCHECKR_USE_ACCOUNT']
+    @@connection_builder   = nil
+    @@snake_case_json_keys = true
+
     def self.access_key(new_access_key = nil)
-      if new_access_key.nil?
-        @@access_key ||= ENV['CLOUDCHECKR_ACCESS_KEY']
-      else
+      unless @@access_key.nil?
         @@access_key = new_access_key
       end
+
+      @@access_key
     end
 
     def self.use_account(new_use_account = nil)
-      if new_use_account.nil?
-        @@use_account ||= ENV['CLOUDCHECKR_USE_ACCOUNT']
-      else
+      unless new_use_account.nil?
         @@use_account = new_use_account
       end
+
+      @@use_account
     end
 
     def self.connection_builder(&builder)
-      @@connection_builder = builder || @@connection_builder
+      unless builder.nil?
+        @@connection_builder = builder
+      end
+
+      @@connection_builder
+    end
+
+    def self.snake_case_json_keys(enable = nil)
+      unless enable.nil?
+        @@snake_case_json_keys = enable
+      end
+
+      @@snake_case_json_keys
     end
   end
 end
