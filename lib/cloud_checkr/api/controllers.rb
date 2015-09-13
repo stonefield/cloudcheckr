@@ -25,12 +25,10 @@ module CloudCheckr
 
               if api_call['method_name'].start_with?('get_')
                 define_method(method_name) do |params = {}, headers = nil, &request_builder|
-                  @client.require_params!(required_params, params)
                   @client.get(controller_name, method_name, params, headers, &request_builder)
                 end
               else
                 define_method(method_name) do |params = {}, headers = nil, &request_builder|
-                  @client.require_params!(required_params, params)
                   @client.post(controller_name, method_name, params, headers, &request_builder)
                 end
               end

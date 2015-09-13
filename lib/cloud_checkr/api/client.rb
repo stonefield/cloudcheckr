@@ -43,16 +43,6 @@ module CloudCheckr
         end
       end
 
-      def require_params!(required_params, params)
-        missing_required_params = required_params.map(&:to_sym) - prepare_params(params).keys.map(&:to_sym)
-        
-        if missing_required_params.any?
-          raise "Missing required parameters: #{missing_required_params.join(', ')}"
-        else
-          nil
-        end
-      end
-
       protected
 
       def prepare_path(controller_name, api_call)
