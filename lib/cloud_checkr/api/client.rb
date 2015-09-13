@@ -98,11 +98,9 @@ module CloudCheckr
         # form-encode POST params
         faraday.request :url_encoded
 
-        faraday.response :xml,     content_type: /\bxml$/
-        faraday.response :json,    content_type: /\bjson$/
-        faraday.response :mashify, content_type: /\bjson$/
-        # faraday.response @format
-        # faraday.response :mashify if @format == :json
+        faraday.response :mashify
+        faraday.response :xml,  content_type: /\bxml$/
+        faraday.response :json, content_type: /\bjson$/
 
         # faraday.response :logger, nil, bodies: true
         # faraday.response :detailed_logger
