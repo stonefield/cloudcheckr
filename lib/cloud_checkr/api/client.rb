@@ -37,7 +37,10 @@ module CloudCheckr
       end
 
       def default_params
-        {access_key: @access_key}
+        {}.tap do |params|
+          params[:access_key]  = @access_key  unless @access_key.nil?
+          params[:use_account] = @use_account unless @use_account.nil?
+        end
       end
 
       def require_params!(required_params, params)
