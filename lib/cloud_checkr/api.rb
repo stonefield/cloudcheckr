@@ -29,7 +29,7 @@ module CloudCheckr
     end
 
     def self.connection_builder(&builder)
-      unless builder.nil?
+      if block_given?
         @@connection_builder = builder
       end
 

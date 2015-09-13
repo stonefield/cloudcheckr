@@ -13,8 +13,6 @@ module CloudCheckr
       attr_reader :access_key, :url, :format
 
       def initialize(options = {}, &connection_builder)
-        super()
-
         @access_key         = options.fetch(:access_key,  API.access_key)
         @use_account        = options.fetch(:use_account, API.use_account)
         @url                = options.fetch(:url,         DEFAULT_URL)
@@ -107,6 +105,7 @@ module CloudCheckr
         faraday.response :json, content_type: /\bjson$/
 
         # faraday.response :logger, nil, bodies: true
+        # require 'faraday/detailed_logger'
         # faraday.response :detailed_logger
 
         faraday.adapter Faraday.default_adapter  # make requests with Net::HTTP
