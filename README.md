@@ -109,13 +109,13 @@ The API client uses [Faraday](https://github.com/lostisland/faraday) under the h
 It's easy to customize Faraday to your liking.
 
 ```ruby
-# Globally apply Faraday settings
+# Globally apply Faraday settings (middleware evaluated in reverse!)
 CloudCheckr::API.connection_builder do |faraday|
   faraday.request :url_encoded
 
+  faraday.response :mashify
   faraday.response :xml,     content_type: /\bxml$/
   faraday.response :json,    content_type: /\bjson$/
-  faraday.response :mashify, content_type: /\bjson$/
   faraday.response :logger, nil, bodies: true
 
   faraday.adapter Faraday.default_adapter  # make requests with Net::HTTP
@@ -125,9 +125,9 @@ end
 client = CloudCheckr::API::Client.new do
   faraday.request :url_encoded
 
+  faraday.response :mashify
   faraday.response :xml,     content_type: /\bxml$/
   faraday.response :json,    content_type: /\bjson$/
-  faraday.response :mashify, content_type: /\bjson$/
   faraday.response :logger, nil, bodies: true
 
   faraday.adapter Faraday.default_adapter  # make requests with Net::HTTP
