@@ -5,7 +5,7 @@ require_relative "./api/response_error"
 
 module CloudCheckr
   module API
-    CONTROLLERS = CloudCheckr::API::Controllers.build_controller_classes!
+    CONTROLLERS ||= CloudCheckr::API::Controllers.build_controller_classes!
 
     @@access_key           = ENV['CLOUDCHECKR_ACCESS_KEY']
     @@use_account          = ENV['CLOUDCHECKR_USE_ACCOUNT']
@@ -13,7 +13,7 @@ module CloudCheckr
     @@snake_case_json_keys = true
 
     def self.access_key(new_access_key = nil)
-      unless @@access_key.nil?
+      unless new_access_key.nil?
         @@access_key = new_access_key
       end
 
