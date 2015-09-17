@@ -48,7 +48,7 @@ module CloudCheckr
       end
 
       def prepare_params(params)
-        if params.nil?
+        if params.empty?
           default_params
         else
           default_params.merge(params)
